@@ -1,18 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scal=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HOME</title>
 <style>
 	html, body {
 		width: 100%;
 		height: 100%;
 	}
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 </style>
 </head>
 <body>
-<th:block th:include="header">
+<th:block th:include="header" />
 <p th:text="${username}">UserName</p>
 <p th:text="${tel}">Tel.</p>
 </body>
