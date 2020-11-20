@@ -9,6 +9,7 @@ import javax.persistence.*;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 
 @Entity
 @Table(name = "tbl_book")
@@ -19,9 +20,10 @@ public class BookVO {
     @Column(name = "id", columnDefinition = "BIGINT")
     private Long id;
 
+    /*
     @Column(name = "str_name")
     private String strName;
-
+    */
     @Column(columnDefinition = "VARCHAR(125)")
     private String title;
 
@@ -31,6 +33,6 @@ public class BookVO {
     @Column(length = 125)
     private String comp;
 
-    @Column(columnDefinition = "INT DEFAULT 0")
+    @Column(nullable = true)
     private int price;
 }

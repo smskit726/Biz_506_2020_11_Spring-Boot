@@ -140,5 +140,4 @@ typings/
 .metadata/
 RemoteSystemsTempFiles/
 
-# Naver API Key
-NaverSecret.*
+.DS_Store
