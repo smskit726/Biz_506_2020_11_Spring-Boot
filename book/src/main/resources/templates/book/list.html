@@ -1,5 +1,6 @@
+<th:block th:include="header"/>
 <body class="book-list">
-<table>
+<table class="table">
     <thead>
     <tr>
         <th>No</th>
@@ -22,5 +23,8 @@
     </tr>
     </tbody>
 </table>
+<div style="text-align: right">
+<a href="/book/insert" style="text-decoration: none; background-color: brown; padding: 5px 14px; margin:5px 10px; color: white; border-radius: 5px;">추가</a>
+</div>
+<th:block th:include="pagination"/>
 </body>
-</html>

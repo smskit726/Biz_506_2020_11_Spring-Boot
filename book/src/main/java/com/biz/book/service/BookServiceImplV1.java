@@ -1,12 +1,19 @@
 package com.biz.book.service;
 
-import com.biz.book.domain.BookVO;
-import com.biz.book.persistence.BookRepository;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import com.biz.book.domain.BookVO;
+import com.biz.book.persistence.BookRepository;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service("bookServiceV1")
 public class BookServiceImplV1 implements BookService{
 
@@ -66,4 +73,16 @@ public class BookServiceImplV1 implements BookService{
         bookDao.deleteById(id);
         return 0;
     }
+
+	@Override
+	public Page<BookVO> pageSelect(Pageable pageable) {
+		// pagination의 페이지번호를 클릭햇을때 데이터를 가져오기 쉽도록 index값을 변화
+		// getPageNumber값을 0부터 시작하도록
+		int page = pageable.getPageNumber() == 0 ? 0: pageable.getPageNumber() -1;
+		// 몇페이지의 데이터를 몇개 가져올것인지 설정
+		pageable = PageRequest.of(page, 10);
+		log.debug(pageable.toString());
+		
+		return bookDao.findAll(pageable);
+	}
 }
